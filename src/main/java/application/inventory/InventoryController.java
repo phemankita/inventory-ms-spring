@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import application.inventory.models.Inventory;
 import application.inventory.models.InventoryRepo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 /**
  * REST Controller to manage Inventory database
  *
  */
 @RestController("inventoryController")
+@Api(value="Inventory API")
 @RequestMapping("/")
 public class InventoryController {
 	
@@ -29,6 +32,7 @@ public class InventoryController {
 	/**
 	 * @return all items in inventory
 	 */
+	@ApiOperation(value = "View a list of available items")
 	@GetMapping("/inventory")
 	@ResponseBody Iterable<Inventory> getInventory() {
 		return itemsRepo.findAll();
