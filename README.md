@@ -12,6 +12,7 @@ https://github.com/ibm-garage-ref-storefront/refarch-cloudnative-storefront*
 * [Pre-requisites:](#pre-requisites)
 * [Implementation Details](#implementation-details)
 * [Running the application on Docker](#running-the-application-on-docker)
+    + [Get the Inventory application](#get-the-inventory-application)
     + [Run the MySQL Docker Container](#run-the-mysql-docker-container)
     + [Populate the MySQL Database](#populate-the-mysql-database)
     + [Run the Inventory application](#run-the-inventory-application)
@@ -49,13 +50,6 @@ For more details on installation, check [this](https://appsody.dev/docs/installi
     + [Docker for Mac](https://docs.docker.com/docker-for-mac/)
     + [Docker for Windows](https://docs.docker.com/docker-for-windows/)
 
-* Clone inventory repository:
-
-```bash
-git clone https://github.com/ibm-garage-ref-storefront/refarch-cloudnative-micro-inventory-spring.git
-cd refarch-cloudnative-micro-inventory-spring
-```
-
 ## Implementation Details
 
 We created a new springboot project using appsody as follows.
@@ -69,6 +63,15 @@ appsody init kabanero/java-spring-boot2
 And then we defined the necessary code for the application on top on this template.
 
 ## Running the application on Docker
+
+### Get the Inventory application
+
+- Clone inventory repository:
+
+```bash
+git clone https://github.com/ibm-garage-ref-storefront/inventory-ms-spring.git
+cd inventory-ms-spring
+```
 
 ### Run the MySQL Docker Container
 
@@ -183,6 +186,12 @@ Now, you can validate the application as follows.
 ```
 curl http://localhost:8080/micro/inventory
 ```
+
+![Inventory api](static/inventory_api_result.png?raw=true)
+
+- Also you can access the swagger ui at http://localhost:8080/micro/swagger-ui.html
+
+![Catalog Swagger UI](static/swagger_catalog.png?raw=true)
 
 ### Exiting the application
 
