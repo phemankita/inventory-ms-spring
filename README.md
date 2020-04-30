@@ -27,8 +27,8 @@ This project will demonstrate how to deploy a Spring Boot Application with a MyS
 
 Here is an overview of the project's features:
 - Leverages [`Spring Boot`](https://projects.spring.io/spring-boot/) framework to build a Microservices application.
-- Uses [`Spring Data JPA`](http://projects.spring.io/spring-data-jpa/) to persist data to MySQL database.
 - Uses [`MySQL`](https://www.mysql.com/) as the inventory database.
+- Uses [`Spring Data JPA`](http://projects.spring.io/spring-data-jpa/) to persist data to MySQL database.
 - Uses [`Docker`](https://docs.docker.com/) to package application binary and its dependencies.
 
 ### APIs
