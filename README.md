@@ -96,7 +96,7 @@ d88a6e5973de        mysql:5.7.14        "docker-entrypoint.s…"   3 minutes ago
 
 Now let us populate the MySQL with data.
 
-- Firstly ssh into the MySQL container.
+- Firstly, `ssh` into the MySQL container.
 
 ```
 docker exec -it inventorymysql bash
