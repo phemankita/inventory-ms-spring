@@ -7,8 +7,9 @@ metadata:
     build-date: 2019-10-29T16:44:53.794580
     commit.image.appsody.dev/author: Hemankita Perabathini <Hemankita1@Hemankitas-MacBook-Pro-2.local>
     commit.image.appsody.dev/committer: Hemankita Perabathini <Hemankita1@Hemankitas-MacBook-Pro-2.local>
-    commit.image.appsody.dev/date: Tue Apr 28 13:29:13 2020 +0530
-    commit.image.appsody.dev/message: root commit
+    commit.image.appsody.dev/date: Thu Apr 30 17:35:12 2020 +0530
+    commit.image.appsody.dev/message: Merge remote-tracking branch 'origin/master'
+      into inventory-2.0
     commit.stack.appsody.dev/author: kilnerm <38245247+kilnerm@users.noreply.github.com>
     commit.stack.appsody.dev/committer: GitHub <noreply@github.com>
     commit.stack.appsody.dev/contextDir: /incubator/java-spring-boot2
@@ -17,10 +18,10 @@ metadata:
     description: This image is the Kabanero development container for the java-spring-boot2
       stack
     distribution-scope: public
-    image.opencontainers.org/created: "2020-04-28T13:45:46+05:30"
+    image.opencontainers.org/created: "2020-04-30T17:42:22+05:30"
     image.opencontainers.org/documentation: https://github.com/ibm-garage-ref-storefront/inventory-ms-spring
-    image.opencontainers.org/revision: a068a5d5ce84066435f706d184aa4172bd5f9de2-modified
-    image.opencontainers.org/source: https://github.com/ibm-garage-ref-storefront/inventory-ms-spring/tree/kabanero
+    image.opencontainers.org/revision: 97f4ec6127f64b490a1e4348b03ac0d4064ec7a6
+    image.opencontainers.org/source: https://github.com/ibm-garage-ref-storefront/inventory-ms-spring/tree/inventory-2.0
     image.opencontainers.org/url: https://github.com/ibm-garage-ref-storefront/inventory-ms-spring
     k8s.io/description: The Universal Base Image is designed and engineered to be
       the base layer for all of your containerized applications, middleware and utilities.
@@ -59,33 +60,48 @@ metadata:
     stack.appsody.dev/id: java-spring-boot2
     stack.appsody.dev/version: 0.3.28
   name: inventory-ms-spring
+  namespace: storefront
 spec:
   applicationImage: dev.local/inventory-ms-spring
   createKnativeService: false
+  env:
+  - name: MYSQL_HOST
+    value: inventory-mysql
+  - name: MYSQL_PORT
+    value: "3306"
+  - name: MYSQL_DATABASE
+    value: inventorydb
+  - name: MYSQL_USER
+    value: dbuser
+  - name: MYSQL_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        key: mysql-password
+        name: inventory-mysql
   expose: true
   livenessProbe:
     failureThreshold: 12
     httpGet:
-      path: /actuator/liveness
+      path: /micro/actuator/liveness
       port: 8080
-    initialDelaySeconds: 5
-    periodSeconds: 2
+    initialDelaySeconds: 20
+    periodSeconds: 20
   monitoring:
     endpoints:
-    - path: /actuator/prometheus
+    - path: /micro/actuator/prometheus
     labels:
       k8s-app: inventory-ms-spring
   readinessProbe:
     failureThreshold: 12
     httpGet:
-      path: /actuator/health
+      path: /micro/actuator/health
       port: 8080
-    initialDelaySeconds: 5
-    periodSeconds: 2
-    timeoutSeconds: 1
+    initialDelaySeconds: 20
+    periodSeconds: 20
+    timeoutSeconds: 60
   service:
     annotations:
-      prometheus.io/path: /actuator/prometheus
+      prometheus.io/path: /micro/actuator/prometheus
       prometheus.io/scrape: "true"
     port: 8080
     type: NodePort

@@ -10,7 +10,6 @@
     <relativePath/>
   </parent>
 
-  <groupId>dev.appsody</groupId>
   <artifactId>inventory-application</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
@@ -43,14 +42,6 @@
     	<groupId>mysql</groupId>
     	<artifactId>mysql-connector-java</artifactId>
     </dependency>
-    <dependency>
-    	<groupId>org.slf4j</groupId>
-    	<artifactId>slf4j-api</artifactId>
-    </dependency>
-	<dependency>
-	    <groupId>org.slf4j</groupId>
-	    <artifactId>slf4j-api</artifactId>
-	</dependency>
 	<dependency>
     	<groupId>io.springfox</groupId>
 	    <artifactId>springfox-swagger2</artifactId>
