@@ -191,7 +191,7 @@ curl http://localhost:8080/micro/inventory
 
 - Also you can access the swagger ui at http://localhost:8080/micro/swagger-ui.html
 
-![Catalog Swagger UI](static/swagger_catalog.png?raw=true)
+![Catalog Swagger UI](static/swagger_inventory.png?raw=true)
 
 ### Exiting the application
 
