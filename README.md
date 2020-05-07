@@ -151,7 +151,7 @@ root@d88a6e5973de:/# exit
 - To run the inventory application, run the below command.
 
 ```
-appsody run --docker-options "-e MYSQL_HOST=host.docker.internal -e MYSQL_PORT=3306 -e MYSQL_DATABASE=inventorydb -e MYSQL_USER=root -e MYSQL_PASSWORD=password"
+appsody run --docker-options "-e MYSQL_HOST=host.docker.internal -e MYSQL_PORT=3306 -e MYSQL_DATABASE=inventorydb -e MYSQL_USER=dbuser -e MYSQL_PASSWORD=password"
 ```
 
 - If it is successfully running, you will see something like below.
