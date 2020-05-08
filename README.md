@@ -9,7 +9,7 @@ https://github.com/ibm-garage-ref-storefront/refarch-cloudnative-storefront*
 
 * [Introduction](#introduction)
     + [APIs](#apis)
-* [Pre-requisites:](#pre-requisites)
+* [Pre-requisites](#pre-requisites)
 * [Implementation Details](#implementation-details)
 * [Running the application on Docker](#running-the-application-on-docker)
     + [Get the Inventory application](#get-the-inventory-application)
