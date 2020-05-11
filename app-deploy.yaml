@@ -5,8 +5,8 @@ metadata:
     architecture: x86_64
     authoritative-source-url: registry.access.redhat.com
     build-date: 2019-10-29T16:44:53.794580
-    commit.image.appsody.dev/author: Hemankita Perabathini <Hemankita1@Hemankitas-MacBook-Pro-2.local>
-    commit.image.appsody.dev/committer: Hemankita Perabathini <Hemankita1@Hemankitas-MacBook-Pro-2.local>
+    commit.image.appsody.dev/author: Hemankita Perabathini <hperabat@in.ibm.com>
+    commit.image.appsody.dev/committer: Hemankita Perabathini <hperabat@in.ibm.com>
     commit.image.appsody.dev/date: Thu Apr 30 17:35:12 2020 +0530
     commit.image.appsody.dev/message: Merge remote-tracking branch 'origin/master'
       into inventory-2.0
