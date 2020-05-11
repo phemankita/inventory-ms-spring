@@ -5,8 +5,8 @@ metadata:
     architecture: x86_64
     authoritative-source-url: registry.access.redhat.com
     build-date: 2019-10-29T16:44:53.794580
-    commit.image.appsody.dev/author: Hemankita Perabathini <Hemankita1@Hemankitas-MacBook-Pro-2.local>
-    commit.image.appsody.dev/committer: Hemankita Perabathini <Hemankita1@Hemankitas-MacBook-Pro-2.local>
+    commit.image.appsody.dev/author: Hemankita Perabathini <hperabat@in.ibm.com>
+    commit.image.appsody.dev/committer: Hemankita Perabathini <hperabat@in.ibm.com>
     commit.image.appsody.dev/date: Thu Apr 30 17:35:12 2020 +0530
     commit.image.appsody.dev/message: Merge remote-tracking branch 'origin/master'
       into inventory-2.0
@@ -62,30 +62,16 @@ metadata:
   name: inventory-ms-spring
   namespace: storefront
 spec:
-  applicationImage: dev.local/inventory-ms-spring
+  applicationImage: docker.io/ibmcase/inventory-ms-spring
   createKnativeService: false
-  env:
-  - name: MYSQL_HOST
-    value: inventory-mysql
-  - name: MYSQL_PORT
-    value: "3306"
-  - name: MYSQL_DATABASE
-    value: inventorydb
-  - name: MYSQL_USER
-    value: dbuser
-  - name: MYSQL_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        key: mysql-password
-        name: inventory-mysql
   expose: true
   livenessProbe:
     failureThreshold: 12
     httpGet:
       path: /micro/actuator/liveness
       port: 8080
-    initialDelaySeconds: 20
-    periodSeconds: 20
+    initialDelaySeconds: 5
+    periodSeconds: 2
   monitoring:
     endpoints:
     - path: /micro/actuator/prometheus
@@ -96,9 +82,23 @@ spec:
     httpGet:
       path: /micro/actuator/health
       port: 8080
-    initialDelaySeconds: 20
-    periodSeconds: 20
-    timeoutSeconds: 60
+    initialDelaySeconds: 5
+    periodSeconds: 2
+    timeoutSeconds: 1
+  env:
+  - name: MYSQL_HOST
+    value: "inventory-mysql"
+  - name: MYSQL_PORT
+    value: "3306"
+  - name: MYSQL_DATABASE
+    value: "inventorydb"
+  - name: MYSQL_USER
+    value: "dbuser"
+  - name: MYSQL_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: inventory-mysql
+        key: mysql-password
   service:
     annotations:
       prometheus.io/path: /micro/actuator/prometheus
