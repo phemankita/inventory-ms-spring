@@ -23,9 +23,6 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /var/lib/mysql
-      # - name: do-something
-      #   image: busybox
-      #   command: ['do', 'something']
       
       containers:
       - name: inventory-mysql
