@@ -22,7 +22,7 @@ https://github.com/ibm-garage-ref-storefront/refarch-cloudnative-storefront*
 
 ## Introduction
 
-This project will demonstrate how to deploy a Spring Boot Application with a MySQL database onto a Kubernetes Cluster.
+This project will demonstrate how to deploy a Spring Boot Application with a MySQL database.
 
 ![Application Architecture](static/inventory.png?raw=true)
 
