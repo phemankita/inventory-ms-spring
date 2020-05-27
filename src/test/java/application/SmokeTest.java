@@ -1,4 +1,4 @@
-package application.controller;
+package application;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,7 +18,7 @@ public class SmokeTest {
     private InventoryController inventoryController;
 
     @Test
-	public void contexLoads() throws Exception {
+	public void contextLoads() throws Exception {
 		assertThat(inventoryController).isNotNull();
     }
     

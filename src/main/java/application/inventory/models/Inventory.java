@@ -15,11 +15,11 @@ import lombok.ToString;
  * Entity: inventorydb.items
  *
  */
+@Entity
+@Table(name = "items")
 @Getter
 @Setter
 @ToString
-@Entity
-@Table(name = "items")
 public class Inventory {
 	
 	// Use generated ID
@@ -55,7 +55,7 @@ public class Inventory {
 	}
 	
 	public Inventory(long id) {
-	    this.id = id;
+		this.id = id;
 	}
 	
 	public Inventory(String name, String description, int price, String img_alt, String img, int stock) {
