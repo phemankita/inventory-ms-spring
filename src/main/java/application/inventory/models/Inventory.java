@@ -29,7 +29,7 @@ public class Inventory {
 	
 	// Item name
 	@NotNull
-	private String name;
+	public String name;
 	
 	// Item description
 	@NotNull

@@ -34,7 +34,8 @@ public class InventoryController {
 	 */
 	@ApiOperation(value = "View a list of available items")
 	@GetMapping("/inventory")
-	@ResponseBody public Iterable<Inventory> getInventory() {
+	@ResponseBody 
+	public Iterable<Inventory> getInventory() {
 		return itemsRepo.findAll();
 	}
 
