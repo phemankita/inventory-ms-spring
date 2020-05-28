@@ -148,6 +148,11 @@ root@d88a6e5973de:/# exit
 
 ### Run the Inventory application
 
+- To test the unit tests for the inventory application, run the below command.
+
+```
+appsody test --docker-options "-e MYSQL_HOST=host.docker.internal -e MYSQL_PORT=3306 -e MYSQL_DATABASE=inventorydb -e MYSQL_USER=dbuser -e MYSQL_PASSWORD=password"
+
 - To run the inventory application, run the below command.
 
 ```
