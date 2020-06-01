@@ -1,4 +1,4 @@
-package application.inventory;
+package application.inventory.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import application.inventory.models.Inventory;
-import application.inventory.models.InventoryRepo;
+import application.inventory.repository.InventoryRepo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
@@ -34,7 +34,8 @@ public class InventoryController {
 	 */
 	@ApiOperation(value = "View a list of available items")
 	@GetMapping("/inventory")
-	@ResponseBody Iterable<Inventory> getInventory() {
+	@ResponseBody 
+	public Iterable<Inventory> getInventory() {
 		return itemsRepo.findAll();
 	}
 
