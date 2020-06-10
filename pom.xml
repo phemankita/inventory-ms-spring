@@ -10,6 +10,7 @@
     <relativePath/>
   </parent>
 
+  <groupId>dev.appsody</groupId>
   <artifactId>inventory-application</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
@@ -19,6 +20,18 @@
     mvn dependency:display-ancestors
     mvn help:effective-pom | grep '\.version>'
     -->
+    
+  <build>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.4.0.905</version>
+            </plugin>
+        </plugins>
+    </pluginManagement>
+  </build>
 
   <dependencies>
     <!-- From parent:

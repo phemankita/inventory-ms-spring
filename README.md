@@ -151,7 +151,8 @@ root@d88a6e5973de:/# exit
 - To test the unit tests for the inventory application, run the below command.
 
 ```
-appsody test --docker-options "-e MYSQL_HOST=host.docker.internal -e MYSQL_PORT=3306 -e MYSQL_DATABASE=inventorydb -e MYSQL_USER=dbuser -e MYSQL_PASSWORD=password"
+appsody test
+```
 
 - To run the inventory application, run the below command.
 
@@ -196,7 +197,25 @@ curl http://localhost:8080/micro/inventory
 
 - Also you can access the swagger ui at http://localhost:8080/micro/swagger-ui.html
 
-![Catalog Swagger UI](static/swagger_inventory.png?raw=true)
+![Inventory Swagger UI](static/swagger_inventory.png?raw=true)
+
+- We also enabled sonarqube as part of the application.
+
+To run the sonarqube as a docker container, run the below command.
+
+```
+docker run -d --name sonarqube -p 9000:9000 sonarqube
+```
+
+To test the application, run the below command.
+
+```
+./mvnw sonar:sonar -Dsonar.login=admin -Dsonar.password=admin
+```
+
+Now, access `http://localhost:9000/`, login using the credentials `admin/admin`, and then you will see something like below.
+
+![Inventory SonarQube](static/inventory_sonarqube.png?raw=true)
 
 ### Exiting the application
 
