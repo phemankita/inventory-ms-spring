@@ -2,7 +2,6 @@ package application.inventory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,20 +10,20 @@ import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import au.com.dius.pact.consumer.Pact;
-import au.com.dius.pact.consumer.PactProviderRuleMk2;
-import au.com.dius.pact.consumer.PactVerification;
 import au.com.dius.pact.consumer.dsl.PactDslJsonBody;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
-import au.com.dius.pact.model.RequestResponsePact;
+import au.com.dius.pact.consumer.junit.PactProviderRule;
+import au.com.dius.pact.consumer.junit.PactVerification;
+import au.com.dius.pact.core.model.RequestResponsePact;
+import au.com.dius.pact.core.model.annotations.Pact;
+
 
 public class AboutInventoryConsumerTest {
 	
 	@Rule
-	public PactProviderRuleMk2 mockProvider
-	  = new PactProviderRuleMk2("inventory_provider", "localhost", 8080, this);
+    public PactProviderRule mockProvider = new PactProviderRule("inventory_provider","localhost", 8080, this);
     
-    @Pact(consumer = "inventory_consumer")
+    @Pact(provider = "inventory_provider", consumer = "inventory_consumer")
     public RequestResponsePact createPact(PactDslWithProvider builder) {
         Map<String, String> headers = new HashMap<>();
         headers.put("Accept", "application/json");
@@ -33,6 +32,8 @@ public class AboutInventoryConsumerTest {
                 .stringValue("name", "Inventory Service")
                 .stringValue("parentRepo", "Storefront")
                 .stringValue("description", "Stores all the inventory data");
+        
+        System.out.println(bodyResponse);
         
         return builder
         	      .given("test GET")
@@ -48,13 +49,14 @@ public class AboutInventoryConsumerTest {
     
     @Test
     @PactVerification()
-    public void givenGet_whenSendRequest_shouldReturn200WithProperHeaderAndBody() throws IOException{
+    public void givenGet_whenSendRequest_shouldReturn200WithProperHeaderAndBody(){
       
     	// when
         ResponseEntity<String> response = new RestTemplate().getForEntity(mockProvider.getUrl() + "/micro/about", String.class);
 //     
         // then
         assertThat(response.getStatusCode().value()).isEqualTo(200);
+        assertThat(response.getHeaders().get("Accept").contains("application/json")).isTrue();
         assertThat(response.getBody()).contains("Inventory Service");
     }
 
