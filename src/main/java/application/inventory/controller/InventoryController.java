@@ -4,16 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import application.inventory.models.About;
-import application.inventory.models.AboutService;
 import application.inventory.models.Inventory;
+import application.inventory.repository.AboutService;
 import application.inventory.repository.InventoryRepo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -33,15 +31,17 @@ public class InventoryController {
 	@Qualifier("inventoryRepo")
 	private InventoryRepo itemsRepo;
 	
-	private AboutService abtService; 
+	@Autowired
+	private AboutService abtService;
 	
 	/**
-	 * @return all items in inventory
+	 * @return about inventory
 	 */
-	@ApiOperation(value = "About")
-	@GetMapping("/about")
-	public  ResponseEntity<String> aboutInventory() {
-		return new ResponseEntity<>(abtService.getInfo().toString(), HttpStatus.OK);
+	@ApiOperation(value = "View a list of available items")
+	@GetMapping(path = "/about", produces = "application/json")
+	@ResponseBody 
+	public About aboutInventory() {
+		return abtService.getInfo();
 	}
 
 	/**

@@ -26,7 +26,7 @@ public class AboutInventoryConsumerTest {
     @Pact(provider = "inventory_provider", consumer = "inventory_consumer")
     public RequestResponsePact createPact(PactDslWithProvider builder) {
         Map<String, String> headers = new HashMap<>();
-        headers.put("Accept", "application/json");
+        headers.put("Content-Type", "application/json");
         
         PactDslJsonBody bodyResponse = new PactDslJsonBody()
                 .stringValue("name", "Inventory Service")
@@ -56,8 +56,8 @@ public class AboutInventoryConsumerTest {
 //     
         // then
         assertThat(response.getStatusCode().value()).isEqualTo(200);
-        assertThat(response.getHeaders().get("Accept").contains("application/json")).isTrue();
-        assertThat(response.getBody()).contains("Inventory Service");
+        assertThat(response.getHeaders().get("Content-Type").contains("application/json")).isTrue();
+        assertThat(response.getBody()).contains("name", "Inventory Service","parentRepo", "Storefront", "description", "Stores all the inventory data");
     }
 
 

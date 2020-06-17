@@ -108,6 +108,23 @@
         <version>1.3.60</version>
         <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>au.com.dius</groupId>
+    	<artifactId>pact-jvm-provider-junit</artifactId>
+    	<version>${pact.version}</version>
+    	<scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>au.com.dius</groupId>
+    	<artifactId>pact-jvm-provider-spring</artifactId>
+    	<version>${pact.version}</version>
+    	<scope>test</scope>
+    </dependency>
+    <dependency>
+	    <groupId>com.h2database</groupId>
+	    <artifactId>h2</artifactId>
+	    <scope>test</scope>
+	</dependency>
   </dependencies>
 
 </project>
