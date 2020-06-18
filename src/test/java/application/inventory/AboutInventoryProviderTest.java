@@ -1,17 +1,12 @@
 package application.inventory;
 
-
-import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.web.context.ConfigurableWebApplicationContext;
 
 import application.Main;
-import application.inventory.controller.InventoryController;
 import application.inventory.models.About;
 import application.inventory.repository.AboutService;
 import au.com.dius.pact.provider.junit.Provider;
