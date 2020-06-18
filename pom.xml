@@ -46,6 +46,26 @@
 				   <pactDirectory>target/pacts</pactDirectory>
                 </configuration>
             </plugin>
+            <!-- Plugin to run unit tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <id>default-test</id>
+                        <configuration>
+                            <!-- <excludes>
+                                <exclude>**/pact/**</exclude>
+                            </excludes> -->
+                            <excludes>
+                                <exclude>**/*ConsumerTest.java</exclude>
+                                <exclude>**/*ProviderTest.java</exclude>
+                            </excludes> 
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </pluginManagement>
   </build>
@@ -126,5 +146,59 @@
 	    <scope>test</scope>
 	</dependency>
   </dependencies>
+  
+   <profiles>
+        <profile>
+            <id>pact-consumer</id>
+            <build>
+		    <pluginManagement>
+		        <plugins>
+		            <!-- Plugin to run pact consumer tests -->
+		            <plugin>
+		                <groupId>org.apache.maven.plugins</groupId>
+		                <artifactId>maven-surefire-plugin</artifactId>
+		                <executions>
+		                    <execution>
+		                        <phase>test</phase>
+		                        <id>default-test</id>
+		                        <configuration>
+		                            <excludes combine.self="override">
+		                            	<exclude>**/*ProviderTest.java</exclude>
+		                            </excludes>
+		                        </configuration>
+		                    </execution>
+		                </executions>
+		            </plugin>
+		        </plugins>
+		    </pluginManagement>
+		  </build>
+        </profile>
+        <profile>
+            <id>pact-producer</id>
+            <build>
+		    <pluginManagement>
+		        <plugins>
+		            <!-- Plugin to run unit tests -->
+		            <plugin>
+		                <groupId>org.apache.maven.plugins</groupId>
+		                <artifactId>maven-surefire-plugin</artifactId>
+		                <executions>
+		                    <execution>
+		                        <phase>test</phase>
+		                        <id>default-test</id>
+		                        <configuration>
+		                            <excludes combine.self="override">
+		                            	<exclude>**/*ConsumerTest.java</exclude>
+		                            </excludes>
+		                        </configuration>
+		                    </execution>
+		                </executions>
+		            </plugin>
+		        </plugins>
+		    </pluginManagement>
+		  </build>
+        </profile>
+    </profiles>
+  
 
 </project>

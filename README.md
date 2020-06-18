@@ -229,13 +229,13 @@ docker-compose up -d
 To publish the pacts to pacts broker, run the below command.
 
 ```
-./mvnw clean install pact:publish -Dpact.broker.url=http://localhost:8500
+./mvnw clean install pact:publish -Dpact.broker.url=http://localhost:8500 -Ppact-consumer
 ```
 
 To verify the results, run the below command.
 
 ```
-./mvnw test -Dpact.verifier.publishResults='true'
+ ./mvnw test -Dpact.verifier.publishResults='true' -Ppact-producer
 ```
 
 Now you can access the pact broker to see if the tests are successful at http://localhost:8500/.
