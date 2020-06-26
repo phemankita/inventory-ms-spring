@@ -235,7 +235,7 @@ To publish the pacts to pacts broker, run the below command.
 To verify the results, run the below command.
 
 ```
- ./mvnw test -Dpact.verifier.publishResults='true' -Ppact-producer
+ ./mvnw test -Dpact.verifier.publishResults='true' -Dpactbroker.host=localhost -Dpactbroker.port=8500 -Ppact-producer
 ```
 
 Now you can access the pact broker to see if the tests are successful at http://localhost:8500/.
