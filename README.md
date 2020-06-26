@@ -1,7 +1,5 @@
 ###### inventory-ms-spring
 
-test inventory
-
 # Microservice Apps Integration with MySQL Database
 
 *This project is part of the 'IBM Cloud Native Reference Architecture' suite, available at
