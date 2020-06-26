@@ -1,6 +1,6 @@
 ###### inventory-ms-spring
 
-test
+test inventory
 
 # Microservice Apps Integration with MySQL Database
 
