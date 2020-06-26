@@ -4,24 +4,23 @@ metadata:
   annotations:
     architecture: x86_64
     authoritative-source-url: registry.access.redhat.com
-    build-date: 2019-10-29T16:44:53.794580
-    commit.image.appsody.dev/author: Hemankita Perabathini <hperabat@in.ibm.com>
-    commit.image.appsody.dev/committer: Hemankita Perabathini <hperabat@in.ibm.com>
-    commit.image.appsody.dev/date: Thu Apr 30 17:35:12 2020 +0530
-    commit.image.appsody.dev/message: Merge remote-tracking branch 'origin/master'
-      into inventory-2.0
+    build-date: 2020-03-31T14:54:13.907559
+    commit.image.appsody.dev/author: phemankita <phemankita@gmail.com>
+    commit.image.appsody.dev/committer: GitHub <noreply@github.com>
+    commit.image.appsody.dev/date: Fri Jun 26 13:08:23 2020 +0530
+    commit.image.appsody.dev/message: 'Merge pull request #11 from oiricaud/master'
     commit.stack.appsody.dev/author: kilnerm <38245247+kilnerm@users.noreply.github.com>
     commit.stack.appsody.dev/committer: GitHub <noreply@github.com>
     commit.stack.appsody.dev/contextDir: /incubator/java-spring-boot2
-    commit.stack.appsody.dev/date: Fri Apr 3 09:22:57 2020 +0100
-    commit.stack.appsody.dev/message: 'Merge pull request #316 from groeges/release-0.6'
+    commit.stack.appsody.dev/date: Thu May 14 09:37:35 2020 +0100
+    commit.stack.appsody.dev/message: 'Merge pull request #340 from groeges/release-0.9-codewind'
     description: This image is the Kabanero development container for the java-spring-boot2
       stack
     distribution-scope: public
-    image.opencontainers.org/created: "2020-04-30T17:42:22+05:30"
+    image.opencontainers.org/created: "2020-06-26T13:14:05+05:30"
     image.opencontainers.org/documentation: https://github.com/ibm-garage-ref-storefront/inventory-ms-spring
-    image.opencontainers.org/revision: 97f4ec6127f64b490a1e4348b03ac0d4064ec7a6
-    image.opencontainers.org/source: https://github.com/ibm-garage-ref-storefront/inventory-ms-spring/tree/inventory-2.0
+    image.opencontainers.org/revision: 211cdcb393d93dcdcd4b4594c81bd58c146a48ef
+    image.opencontainers.org/source: https://github.com/ibm-garage-ref-storefront/inventory-ms-spring/tree/master
     image.opencontainers.org/url: https://github.com/ibm-garage-ref-storefront/inventory-ms-spring
     k8s.io/description: The Universal Base Image is designed and engineered to be
       the base layer for all of your containerized applications, middleware and utilities.
@@ -33,24 +32,25 @@ metadata:
     name: kabanero/java-spring-boot2
     openshift.io/expose-services: ""
     openshift.io/tags: base rhel8
-    redhat.com/build-host: cpt-1002.osbs.prod.upshift.rdu2.redhat.com
+    redhat.com/build-host: cpt-1007.osbs.prod.upshift.rdu2.redhat.com
     redhat.com/component: ubi8-container
     redhat.com/license_terms: https://www.redhat.com/en/about/red-hat-end-user-license-agreements#UBI
-    release: "277"
-    stack.appsody.dev/authors: Erin Schnabel <schnabel@us.ibm.com>, Ozzy Osborne <ozzy@ca.ibm.com>
+    release: "408"
+    stack.appsody.dev/authors: Erin Schnabel <ebullient>, Ozzy Osborne <bardweller>,
+      Richard Trotter <richard-trotter>, Harish Yayi <yharish991>
     stack.appsody.dev/configured: docker.io/kabanero/java-spring-boot2:0.3
-    stack.appsody.dev/created: "2020-04-21T06:49:54Z"
+    stack.appsody.dev/created: "2020-05-19T06:48:21Z"
     stack.appsody.dev/description: Spring Boot using OpenJ9 and Maven
     stack.appsody.dev/documentation: https://github.com/kabanero-io/collections/tree/master/incubator/java-spring-boot2/README.md
     stack.appsody.dev/licenses: Apache-2.0
-    stack.appsody.dev/revision: 27a3254c80e6c5367a76e6099c2e18b393d15841
+    stack.appsody.dev/revision: 104bb146d0d770e30886b845d7fca9311d54ed20
     stack.appsody.dev/source: https://github.com/kabanero-io/collections/tree/master/incubator/java-spring-boot2/image
-    stack.appsody.dev/tag: docker.io/kabanero/java-spring-boot2:0.3.28
+    stack.appsody.dev/tag: docker.io/kabanero/java-spring-boot2:0.3.29
     stack.appsody.dev/title: Spring Boot®
     stack.appsody.dev/url: https://github.com/kabanero-io/collections/tree/master/incubator/java-spring-boot2
     summary: Image for Kabanero java-spring-boot2 development
-    url: https://access.redhat.com/containers/#/registry.access.redhat.com/ubi8/images/8.1-277
-    vcs-ref: c42933bcdbf9f1c232e981a5e40de257c3534c8e
+    url: https://access.redhat.com/containers/#/registry.access.redhat.com/ubi8/images/8.1-408
+    vcs-ref: 26f36bfa3e3a04c8c866b250924c1aefc34f01c9
     vcs-type: git
     vendor: Kabanero
     version: 0.3.23
@@ -58,12 +58,26 @@ metadata:
   labels:
     image.opencontainers.org/title: inventory-ms-spring
     stack.appsody.dev/id: java-spring-boot2
-    stack.appsody.dev/version: 0.3.28
+    stack.appsody.dev/version: 0.3.29
   name: inventory-ms-spring
   namespace: storefront-dev
 spec:
-  applicationImage: docker.io/ibmcase/inventory-ms-spring
+  applicationImage: dev.local/inventory-ms-spring
   createKnativeService: false
+  env:
+  - name: MYSQL_HOST
+    value: inventory-mysql
+  - name: MYSQL_PORT
+    value: "3306"
+  - name: MYSQL_DATABASE
+    value: inventorydb
+  - name: MYSQL_USER
+    value: dbuser
+  - name: MYSQL_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        key: mysql-password
+        name: inventory-mysql
   expose: true
   livenessProbe:
     failureThreshold: 12
@@ -85,20 +99,6 @@ spec:
     initialDelaySeconds: 5
     periodSeconds: 2
     timeoutSeconds: 1
-  env:
-  - name: MYSQL_HOST
-    value: "inventory-mysql"
-  - name: MYSQL_PORT
-    value: "3306"
-  - name: MYSQL_DATABASE
-    value: "inventorydb"
-  - name: MYSQL_USER
-    value: "dbuser"
-  - name: MYSQL_PASSWORD
-    valueFrom:
-      secretKeyRef:
-        name: inventory-mysql
-        key: mysql-password
   service:
     annotations:
       prometheus.io/path: /micro/actuator/prometheus
