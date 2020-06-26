@@ -1,6 +1,6 @@
 ###### inventory-ms-spring
 
-test
+test pact
 
 # Microservice Apps Integration with MySQL Database
 
